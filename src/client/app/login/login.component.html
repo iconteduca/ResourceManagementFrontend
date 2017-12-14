@@ -1,0 +1,23 @@
+<div class="login-page">
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4">
+            <img src="assets/img/SB-admin.png" width="150px" class="user-avatar" />
+            <h1>SERVICE LINE APPLICATION Management</h1>
+            <form role="form" (ngSubmit)="onSubmit()">
+                <div class="form-content">
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="model.username" id="username" name="username" class="form-control input-underline input-lg" placeholder="Email" required/>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" [(ngModel)]="model.password" id="password" name="password" class="form-control input-underline input-lg" placeholder="Password" required/>
+                    </div>
+                </div>
+                <!--<a class="btn rounded-btn" routerLink="/dashboard/home" on-> Log in </a> &nbsp;-->
+                <div>
+                    <button type="submit" class="btn btn-primary">login</button>
+                    <!--(click)="login()" -->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

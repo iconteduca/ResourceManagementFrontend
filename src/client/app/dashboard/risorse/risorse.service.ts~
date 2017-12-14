@@ -1,0 +1,34 @@
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+import { RisorseOption } from '../classes/risorseOption';
+import {host} from '../../../assets/scripts/config';
+
+@Injectable()
+export class RisorseService {
+  constructor(private http: Http) { };
+
+  private risorseUrl = host+'risorse';
+  private risorseOptionUrl = host+'risorseOption';
+
+  getRisorse() {
+    return this.http.get(this.risorseUrl)
+      .map(response => response.json());
+  }
+  /*  getRisorseOption(): Promise<RisorseOption[]> {
+      return this.http.get(this.risorseOptionUrl)
+        .toPromise()
+        .then(response => response.json() as RisorseOption[])
+        .catch(this.handleError);
+    }*/
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred', error); // for demo purposes only
+    return Promise.reject(error.message || error);
+  }
+
+  getRisorseOption() {
+    return this.http.get(this.risorseOptionUrl)
+      .map(response => response.json());
+  }
+
+}

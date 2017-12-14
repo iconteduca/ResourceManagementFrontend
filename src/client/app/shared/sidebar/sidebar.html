@@ -1,0 +1,29 @@
+<button class="btn btn-default" id="toggle-sidebar" type="button" (click)="eventCalled()">
+    &#9776;
+</button>
+<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
+    <ul class="list-group">
+        <a routerLink="/dashboard/home" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-dashboard"></i> Dashboard
+        </a>
+        <a [routerLink]="['allocazione']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-calendar"></i> Allocazione Risorse
+        </a>
+        <a [routerLink]="['risorse']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-user"></i> Risorse
+        </a>
+        <a [routerLink]="['progetti']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-folder-open-o"></i> Progetti
+        </a>
+        <!--      <a [routerLink]="['skills']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-keyboard-o"></i> Skills
+        </a>
+        <a [routerLink]="['formazione']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-graduation-cap"></i> Formazione
+        </a>
+        <a [routerLink]="['documenti']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-file-o"></i> Documenti Utili
+        </a>
+        -->
+    </ul>
+</nav>

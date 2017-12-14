@@ -1,0 +1,1 @@
+{"version":3,"file":"/home/admin/Programmi/resourceManagement/AISMfrontend/tools/utils/project/sample_util.ts","sources":["/home/admin/Programmi/resourceManagement/AISMfrontend/tools/utils/project/sample_util.ts"],"names":[],"mappings":";AAAA;AAEA,CAAC;AAFe,cAAM,SAErB,CAAA","sourcesContent":["export function myUtil() {\r\n  // Code goes here\r\n}\r\n"]}

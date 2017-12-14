@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <div class="loading" *ngIf="loader"></div>
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-xl-12">
+            <ol class="breadcrumb">
+                <li>
+                    <i class="fa fa-dashboard"></i> <a href="Javascript:void(0)" routerLink="/dashboard/home">Dashboard</a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-fw fa fa-folder-open-o"></i> Progetti
+                </li>
+            </ol>
+        </div>
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-xl-3"><button class="btn btn-primary" (click)="showModalProgetto()"><i class="fa fa-plus" aria-hidden="true"></i> Nuovo Progetto</button></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class='table-responsive'>
+                <ng-table [config]="config" [rows]="rows" [columns]="columns" (tableChanged)="onChangeTable(config)" (cellClicked)="onCellClick($event)">
+                </ng-table>
+            </div>
+            <dialog-progetto-cmp #progettoModal [childTitle]='childTitle' (outputEvent)="onComponentChange($event)" (notify)='onNotify($event)'></dialog-progetto-cmp>
+            <dialog-allocazione-cmp #allocazioneModal [childTitle]='childTitle' [risorse]="risorse" [idProgetto]='idProgetto' (notify)='onNotify($event)'></dialog-allocazione-cmp>
+            <dialog-allocazioneMod-cmp #allocazioneModModal [childTitle]='childTitle' [risorseToModify]="risorseToModify" [idProgetto]='idProgetto' (notify)='onNotify($event)'></dialog-allocazioneMod-cmp>
+            <confirm-form-cmp #confirmModal [childTitle]='childTitle' [msg]='msg' [idProgetto]='idProgetto' (notify)='onNotify($event)'></confirm-form-cmp>
+
+        </div>
+    </div>
+</div>

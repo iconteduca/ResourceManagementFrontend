@@ -1,0 +1,51 @@
+import { Injectable } from '@angular/core';
+import { Http, RequestOptions, Headers } from '@angular/http';
+import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Observable';
+import { Progetti } from '../classes/index';
+import { RisorseProgetti } from '../classes/risorseprogetti';
+import {host} from '../../../assets/scripts/config';
+
+@Injectable()
+export class ProgettiService {
+  constructor(private http: Http) { };
+
+  private getProgettiUrl = host+'progettis';
+  private saveProgettiUrl = host+'crea';
+  private saveRisorseProgettiUrl = host+'risorseProgetti/crea';
+
+
+  getProgetti(): Observable<Progetti[]> {
+    return this.http.get(this.getProgettiUrl)
+      .map(response => {
+        return response.json();
+      })
+  }
+
+  saveProgetto(progetto: Progetti){
+
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    let content = JSON.stringify(progetto);
+    return this.http.post(this.saveProgettiUrl, content, {
+      headers: headers
+    })
+      .map(response => {
+        return response.status;
+      })
+  }
+  saveRisorsaProgetto(risorsaprogetto: RisorseProgetti) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    let content = JSON.stringify(risorsaprogetto);
+    return this.http.post(this.saveRisorseProgettiUrl, content, {
+      headers: headers
+    })
+      .map(response => {
+        return response;
+      })
+      .catch(err=> {
+        return err.status;
+      })
+  }
+}

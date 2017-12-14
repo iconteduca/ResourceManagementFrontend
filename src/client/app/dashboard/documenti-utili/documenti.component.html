@@ -1,0 +1,27 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-xl-12">
+            <ol class="breadcrumb">
+                <li>
+                    <i class="fa fa-dashboard"></i> <a href="Javascript:void(0)" routerLink="/dashboard/home">Dashboard</a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-fw fa fa-file-o"></i> Documenti
+                </li>
+            </ol>
+        </div>
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-10">
+            <ng-table [config]="config" [rows]="rows" [columns]="columns">
+            </ng-table>
+        </div>
+    </div>
+
+
+
+
+</div>

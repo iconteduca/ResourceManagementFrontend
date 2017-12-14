@@ -1,0 +1,38 @@
+import { Task } from './gantt/lib/shared/interfaces';
+import { Allocazioni } from './../classes/allocazioni';
+import { Injectable } from '@angular/core';
+import { Headers, Http } from '@angular/http';
+import {host} from '../../../assets/scripts/config';
+import 'rxjs/add/operator/toPromise';
+
+
+@Injectable()
+export class AllocazioneService {
+  private risorseUrl = host+'risorseprogetti';
+  private risorseFilteredUrl = host+'filteredRisorseProgetti/';
+  constructor(private http: Http) { }
+
+  getRisorseProgetti(): Promise<Task[]> {
+    return this.http.get(this.risorseUrl)
+    .toPromise()
+    .then(response => response.json() as Task[])
+    .catch(this.handleError);
+
+  }
+  getFilteredRisorseProgetti(nome:string): Promise<Task[]> {
+    return this.http.get(this.risorseFilteredUrl+'?nomeRisorsa='+nome+'')
+    .toPromise()
+    .then(response => response.json() as Task[])
+    .catch(this.handleError);
+
+  }
+
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred', error); // for demo purposes only
+    return Promise.reject(error.message || error);
+  }
+
+
+
+}
+
